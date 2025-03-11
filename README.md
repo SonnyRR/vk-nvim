@@ -1,18 +1,35 @@
-# VK's NeoVim Config
+# 🏝️ Vasil Kotsev's Neovim Config
 
-### Windows pre-requisites
+A nvim configuration with sensible defaults. Supports C#, JS, TS & Angular projects.
 
-#### Variables
+## Pre-requisites
+
+In order to use this configuration you'll need the following dependencies:
+
+### 🪟 Windows
+
+#### 📦 Packages
+
+```powershell
+winget install BurntSushi.ripgrep.MSVC
+winget install zig.zig
+winget install junegunn.fzf
+winget install Microsoft.DotNet.SDK.9
+winget install OpenJS.NodeJS
+```
+#### ⚗️ Variables (Optional)
 
 ```powershell
 [System.Environment]::SetEnvironmentVariable('XDG_DATA_HOME', 'D:\', 'User')
 [System.Environment]::SetEnvironmentVariable('XDG_CONFIG_HOME', 'D:\dotfiles', 'User')
 ```
 
-#### Dependencies
+### 🍎 MacOS
 
-```powershell
-winget install BurntSushi.ripgrep.MSVC
-winget install zig.zig
-winget install junegunn.fzf
+#### 📦 Packages
+```shell
+brew install ripgrep
+brew install fzf
+brew install --cask dotnet-sdk
+brew install node
 ```
