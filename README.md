@@ -2,6 +2,8 @@
 
 A nvim configuration with sensible defaults. Supports C#, JS, TS & Angular projects.
 
+![Screenshot 2025-03-11 at 21 18 49](https://github.com/user-attachments/assets/2d94b26f-f8ba-4717-85be-0375ce3fe5ae)
+
 ## Pre-requisites
 
 In order to use this configuration you'll need the following dependencies:
