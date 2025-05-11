@@ -231,6 +231,7 @@ return {
 			},
 			netcoredbg = {},
 			ts_ls = {},
+			prettierd = {},
 		}
 
 		-- Ensure the servers and tools above are installed
