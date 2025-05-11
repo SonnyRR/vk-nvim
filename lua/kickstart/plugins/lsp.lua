@@ -167,7 +167,8 @@ return {
 			return
 		end
 
-		local angularls_path = mason_registry.get_package("angular-language-server"):get_install_path()
+		local angularls_path = vim.fn.expand("$MASON/packages/angular-language-server")
+
 		local cmd = {
 			"ngserver",
 			"--stdio",
