@@ -11,7 +11,7 @@ __   ___  __
 \ \ / | |/ /
  \ V /| ' < 
   \_/ |_|\_\
-           
+
         ]],
         -- stylua: ignore
         ---@type snacks.dashboard.Item[]
@@ -31,6 +31,7 @@ __   ___  __
   },
 }
 
-return M;
+return M
 
 -- vim: ts=2 sts=2 sw=2 et
+

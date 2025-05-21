@@ -30,10 +30,11 @@ return {
           '.DS_Store',
           'thumbs.db',
         },
-       never_show = {},
+        never_show = {},
       },
     },
   },
 }
 
 -- vim: ts=2 sts=2 sw=2 et
+
