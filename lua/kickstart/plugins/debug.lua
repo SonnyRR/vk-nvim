@@ -1,5 +1,3 @@
--- debug.lua
---
 -- Shows how to use the DAP plugin to debug your code.
 --
 -- Primarily focused on configuring the debugger for Go, but can
@@ -7,9 +5,7 @@
 -- kickstart.nvim and not kitchen-sink.nvim ;)
 
 return {
-  -- NOTE: Yes, you can install new plugins here!
   'mfussenegger/nvim-dap',
-  -- NOTE: And you can specify dependencies as well
   dependencies = {
     -- Creates a beautiful debugger UI
     'rcarriga/nvim-dap-ui',
@@ -18,7 +14,7 @@ return {
     'nvim-neotest/nvim-nio',
 
     -- Installs the debug adapters for you
-    'williamboman/mason.nvim',
+    'mason-org/mason.nvim',
     'jay-babu/mason-nvim-dap.nvim',
 
     -- Add your own debuggers here
@@ -77,8 +73,8 @@ return {
     },
   },
   config = function()
-    local dap = require('dap')
-    local dapui = require('dapui')
+    local dap = require 'dap'
+    local dapui = require 'dapui'
 
     require('mason-nvim-dap').setup {
       -- Makes a best effort to setup the various debuggers with
@@ -93,13 +89,13 @@ return {
       },
     }
 
-    local ok, mason_registry = pcall(require, 'mason-registry')
+    local ok, _ = pcall(require, 'mason-registry')
     if not ok then
       vim.notify 'mason-registry could not be loaded'
       return
     end
 
-    local netcoredbg_path = mason_registry.get_package('netcoredbg'):get_install_path() .. '\\netcoredbg\\netcoredbg.exe'
+    local netcoredbg_path = vim.fn.expand '$MASON/packages/netcoredbg/netcoredbg'
 
     if not dap.adapters['netcoredbg'] then
       dap.adapters['netcoredbg'] = {
@@ -115,8 +111,67 @@ return {
       -- Set icons to characters that are more likely to work in every terminal.
       --    Feel free to remove or use ones that you like more! :)
       --    Don't feel like these are good choices.
+      expand_lines = true,
+      element_mappings = {},
+      floating = {
+        border = 'single',
+        mappings = {
+          close = { 'q', '<Esc>' },
+        },
+      },
+      mappings = {
+        edit = 'e',
+        expand = { '<CR>', '<2-LeftMouse>' },
+        open = 'o',
+        remove = 'd',
+        repl = 'r',
+        toggle = 't',
+      },
+      render = {
+        indent = 1,
+        max_value_lines = 100,
+      },
+      force_buffers = true,
+
+      layouts = {
+        {
+          elements = {
+            {
+              id = 'scopes',
+              size = 0.25,
+            },
+            {
+              id = 'breakpoints',
+              size = 0.25,
+            },
+            {
+              id = 'stacks',
+              size = 0.25,
+            },
+            {
+              id = 'watches',
+              size = 0.25,
+            },
+          },
+          position = 'left',
+          size = 40,
+        },
+        {
+          elements = { {
+            id = 'repl',
+            size = 0.5,
+          }, {
+            id = 'console',
+            size = 0.5,
+          } },
+          position = 'bottom',
+          size = 10,
+        },
+      },
       icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
       controls = {
+        enabled = true,
+        element = 'repl',
         icons = {
           pause = '⏸',
           play = '▶',
@@ -139,10 +194,10 @@ return {
       vim.fn.jobstart(string.format('dotnet build %s', path), {
         on_exit = function(_, return_code)
           if return_code == 0 then
-            spinner:stop_spinner('Built successfully')
+            spinner:stop_spinner 'Built successfully'
           else
             spinner:stop_spinner('Build failed with exit code ' .. return_code, vim.log.levels.ERROR)
-            error('Build failed')
+            error 'Build failed'
           end
           coroutine.resume(co)
         end,
@@ -150,7 +205,7 @@ return {
       coroutine.yield()
     end
 
-    local dotnet = require('easy-dotnet')
+    local dotnet = require 'easy-dotnet'
     local debug_dll = nil
 
     local function ensure_dll()
@@ -165,12 +220,12 @@ return {
     for _, value in ipairs { 'cs', 'fsharp' } do
       dap.configurations[value] = {
         {
-          log_level = "DEBUG",
-          type = "netcoredbg",
+          log_level = 'DEBUG',
+          type = 'netcoredbg',
           justMyCode = false,
           stopAtEntry = false,
-          name = "Default",
-          request = "launch",
+          name = 'Default',
+          request = 'launch',
           env = function()
             local dll = ensure_dll()
             local vars = dotnet.get_environment_variables(dll.project_name, dll.relative_project_path)
@@ -186,7 +241,7 @@ return {
             local dll = ensure_dll()
             return dll.relative_project_path
           end,
-          preLaunchTask = "Build .NET App With Spinner",
+          preLaunchTask = 'Build .NET App With Spinner',
         },
       }
     end

@@ -5,10 +5,10 @@ return {
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 
-        'diff', 
-        'lua', 
-        'luadoc', 
+      ensure_installed = {
+        'diff',
+        'lua',
+        'luadoc',
         'regex',
         'json',
         'editorconfig',
@@ -20,16 +20,18 @@ return {
         'dockerfile',
         'powershell',
         'bash',
-        'c_sharp', 
+        'c_sharp',
         'sql',
-        'javascript', 
-        'typescript', 
-        'html', 
+        'javascript',
+        'typescript',
+        'html',
         'angular',
         'css',
         'scss',
         'zig',
-        'elixir'
+        'elixir',
+        'xml',
+        'yaml',
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
