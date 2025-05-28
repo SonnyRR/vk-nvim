@@ -23,7 +23,8 @@ __   ___  __
           { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
           { icon = " ", key = "s", desc = "Restore Session", section = "session" },
           { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy" },
-          { icon = "󱥒",  key = "m", desc = "Mason", action = ":Mason" },
+          { icon = "󱥒 ",  key = "m", desc = "Mason", action = ":Mason" },
+          { icon = "♥︎ ",  key = "h", desc = "Health check", action = ":checkhealth" },
           { icon = " ", key = "q", desc = "Quit", action = ":qa" },
         },
       },
@@ -34,4 +35,3 @@ __   ___  __
 return M
 
 -- vim: ts=2 sts=2 sw=2 et
-
