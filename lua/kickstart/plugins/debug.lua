@@ -95,7 +95,7 @@ return {
       return
     end
 
-    local netcoredbg_path = vim.fn.expand '$MASON/packages/netcoredbg/netcoredbg'
+    local netcoredbg_path = vim.fn.exepath 'netcoredbg'
 
     if not dap.adapters['netcoredbg'] then
       dap.adapters['netcoredbg'] = {
