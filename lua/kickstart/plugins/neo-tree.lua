@@ -1,7 +1,4 @@
--- Neo-tree is a Neovim plugin to browse the file system
--- https://github.com/nvim-neo-tree/neo-tree.nvim
-
-return {
+local M = {
   'nvim-neo-tree/neo-tree.nvim',
   version = '*',
   dependencies = {
@@ -36,5 +33,5 @@ return {
   },
 }
 
+return M
 -- vim: ts=2 sts=2 sw=2 et
-

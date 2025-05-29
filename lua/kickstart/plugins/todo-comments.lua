@@ -1,4 +1,4 @@
-return {
+local M = {
   {
     'folke/todo-comments.nvim',
     event = 'VimEnter',
@@ -7,4 +7,5 @@ return {
   },
 }
 
+return M
 -- vim: ts=2 sts=2 sw=2 et

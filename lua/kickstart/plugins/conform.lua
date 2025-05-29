@@ -1,4 +1,4 @@
-return {
+local M = {
   {
     'stevearc/conform.nvim',
     event = { 'BufWritePre' },
@@ -44,4 +44,5 @@ return {
   },
 }
 
+return M
 -- vim: ts=2 sts=2 sw=2 et

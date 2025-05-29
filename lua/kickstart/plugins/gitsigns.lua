@@ -2,7 +2,7 @@
 -- NOTE: gitsigns is already included in init.lua but contains only the base
 -- config. This will add also the recommended keymaps.
 
-return {
+local M = {
   {
     'lewis6991/gitsigns.nvim',
     opts = {
@@ -60,5 +60,5 @@ return {
   },
 }
 
+return M
 -- vim: ts=2 sts=2 sw=2 et
-

@@ -1,4 +1,4 @@
-return {
+local M = {
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
@@ -121,5 +121,5 @@ return {
   },
 }
 
+return M
 -- vim: ts=2 sts=2 sw=2 et
-

@@ -5,7 +5,7 @@
 --
 -- Use the `dependencies` key to specify the dependencies of a particular plugin
 
-return {
+local M = {
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
@@ -109,4 +109,5 @@ return {
   },
 }
 
+return M
 -- vim: ts=2 sts=2 sw=2 et

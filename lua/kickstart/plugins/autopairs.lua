@@ -1,7 +1,4 @@
--- autopairs
--- https://github.com/windwp/nvim-autopairs
-
-return {
+local M = {
   'windwp/nvim-autopairs',
   event = 'InsertEnter',
   -- Optional dependency
@@ -15,4 +12,5 @@ return {
   end,
 }
 
+return M
 -- vim: ts=2 sts=2 sw=2 et

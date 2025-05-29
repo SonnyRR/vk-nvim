@@ -1,4 +1,4 @@
-return {
+local M = {
   {
     -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
     -- used for completion, annotations and signatures of Neovim apis
@@ -13,4 +13,5 @@ return {
   },
 }
 
+return M
 -- vim: ts=2 sts=2 sw=2 et

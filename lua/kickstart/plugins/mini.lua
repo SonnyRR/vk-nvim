@@ -1,4 +1,4 @@
-return {
+local M = {
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
     config = function()
@@ -38,4 +38,5 @@ return {
   },
 }
 
+return M
 -- vim: ts=2 sts=2 sw=2 et

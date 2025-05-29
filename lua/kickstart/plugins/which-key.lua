@@ -12,7 +12,7 @@
 -- Then, because we use the `opts` key (recommended), the configuration runs
 -- after the plugin has been loaded as `require(MODULE).setup(opts)`.
 
-return {
+local M = {
   { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
@@ -70,5 +70,6 @@ return {
     },
   },
 }
--- vim: ts=2 sts=2 sw=2 et
 
+return M
+-- vim: ts=2 sts=2 sw=2 et

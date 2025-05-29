@@ -1,5 +1,4 @@
-return {
-
+local M = {
   { -- Linting
     'mfussenegger/nvim-lint',
     event = { 'BufReadPre', 'BufNewFile' },
@@ -7,9 +6,9 @@ return {
       local lint = require 'lint'
       lint.linters_by_ft = {
         markdown = { 'markdownlint' },
-        dockerfile = { "hadolint" },
-        json = { "jsonlint" },
-        text = { "vale" }
+        dockerfile = { 'hadolint' },
+        json = { 'jsonlint' },
+        text = { 'vale' },
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
@@ -58,4 +57,5 @@ return {
   },
 }
 
+return M
 -- vim: ts=2 sts=2 sw=2 et
