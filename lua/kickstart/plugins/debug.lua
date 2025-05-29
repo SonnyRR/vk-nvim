@@ -4,7 +4,7 @@
 -- be extended to other languages as well. That's why it's called
 -- kickstart.nvim and not kitchen-sink.nvim ;)
 
-return {
+local M = {
   'mfussenegger/nvim-dap',
   dependencies = {
     -- Creates a beautiful debugger UI
@@ -95,7 +95,13 @@ return {
       return
     end
 
-    local netcoredbg_path = vim.fn.exepath 'netcoredbg'
+    local netcoredbg_path
+
+    if vim.fn.has 'win32' == 1 then
+      netcoredbg_path = vim.fn.expand '$MASON/packages/netcoredbg/netcoredbg.exe'
+    else
+      netcoredbg_path = vim.fn.expand '$MASON/bin/netcoredbg'
+    end
 
     if not dap.adapters['netcoredbg'] then
       dap.adapters['netcoredbg'] = {
@@ -178,7 +184,7 @@ return {
           step_into = '⏎',
           step_over = '⏭',
           step_out = '⏮',
-          step_back = 'b',
+          step_back = '◁',
           run_last = '▶▶',
           terminate = '⏹',
           disconnect = '⏏',
@@ -274,4 +280,5 @@ return {
   end,
 }
 
+return M
 -- vim: ts=2 sts=2 sw=2 et
