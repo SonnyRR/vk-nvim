@@ -5,9 +5,10 @@ local M = {
     config = function()
       local lint = require 'lint'
       lint.linters_by_ft = {
-        markdown = { 'markdownlint' },
+        markdown = { 'markdownlint-cli2' },
         dockerfile = { 'hadolint' },
         json = { 'jsonlint' },
+        yaml = { 'yamllint' },
         text = { 'vale' },
       }
 

@@ -229,6 +229,12 @@ local M = {
       netcoredbg = {},
       ts_ls = {},
       prettierd = {},
+      vale = {},
+      hadolint = {},
+      actionlint = {},
+      ['markdownlint-cli2'] = {},
+      jsonlint = {},
+      yamllint = {},
     }
 
     -- Ensure the servers and tools above are installed
