@@ -1,8 +1,32 @@
 local M = {
   'seblyng/roslyn.nvim',
-  ft = 'cs',
-  opts = {
-    config = {
+  ft = { 'cs', 'razor', 'cshtml' },
+  dependencies = {
+    {
+      -- By loading as a dependencies, we ensure that we are available to set
+      -- the handlers for Roslyn.
+      'tris203/rzls.nvim',
+      config = true,
+    },
+  },
+  config = function()
+    local mason_registry = require 'mason-registry'
+
+    local rzls_path = vim.fn.expand '$MASON/packages/rzls/libexec'
+    local cmd = {
+      'roslyn',
+      '--stdio',
+      '--logLevel=Information',
+      '--extensionLogDirectory=' .. vim.fs.dirname(vim.lsp.get_log_path()),
+      '--razorSourceGenerator=' .. vim.fs.joinpath(rzls_path, 'Microsoft.CodeAnalysis.Razor.Compiler.dll'),
+      '--razorDesignTimePath=' .. vim.fs.joinpath(rzls_path, 'Targets', 'Microsoft.NET.Sdk.Razor.DesignTime.targets'),
+      '--extension',
+      vim.fs.joinpath(rzls_path, 'RazorExtension', 'Microsoft.VisualStudioCode.RazorExtension.dll'),
+    }
+
+    vim.lsp.config('roslyn', {
+      cmd = cmd,
+      handlers = require 'rzls.roslyn_handlers',
       settings = {
         -- https://github.com/dotnet/vscode-csharp/blob/main/test/lsptoolshost/unitTests/configurationMiddleware.test.ts
         ['csharp|inlay_hints'] = {
@@ -26,9 +50,20 @@ local M = {
           dotnet_organize_imports_on_format = true,
         },
       },
-    },
-    broad_search = true,
-  },
+      broad_search = true,
+    })
+
+    vim.lsp.enable 'roslyn'
+  end,
+  init = function()
+    -- We add the Razor file types before the plugin loads.
+    vim.filetype.add {
+      extension = {
+        razor = 'razor',
+        cshtml = 'razor',
+      },
+    }
+  end,
 }
 
 return M

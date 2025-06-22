@@ -64,6 +64,9 @@ local M = {
             require('telescope.themes').get_dropdown(),
           },
         },
+        defaults = {
+          file_ignore_patterns = { '%__virtual.cs$', '%__virtual.html$', '%__virtual.cshtml$' },
+        },
       }
 
       -- Enable Telescope extensions if they are installed

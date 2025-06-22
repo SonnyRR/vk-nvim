@@ -217,8 +217,9 @@ local M = {
           },
         },
       },
-      roslyn = {},
+      ['html-lsp'] = {},
       rzls = {},
+      roslyn = {},
       angularls = {
         cmd = cmd,
         filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx', 'htmlangular' },
