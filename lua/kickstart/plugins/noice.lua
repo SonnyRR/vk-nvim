@@ -18,7 +18,9 @@ local M = {
       require('noice').setup {
         lsp = {
           progress = {
-            enabled = true,
+            -- Temporarily disabled until https://github.com/dotnet/roslyn/issues/79939 is resolved.
+            -- For reference see: https://github.com/folke/noice.nvim/issues/1144
+            enabled = false,
           },
           override = {
             ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
