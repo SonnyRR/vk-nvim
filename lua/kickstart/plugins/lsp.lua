@@ -183,6 +183,9 @@ local M = {
         vim.uv.cwd(),
       }, ','),
     }
+
+    local lspconfig = require 'lspconfig'
+
     -- Enable the following language servers
     --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
     --
@@ -216,6 +219,14 @@ local M = {
             -- diagnostics = { disable = { 'missing-fields' } },
           },
         },
+      },
+      expert = {
+        cmd = { '$MASON/bin/expert' },
+        filetypes = { 'elixir', 'eelixir', 'heex' },
+        -- root_dir = lspconfig.util.root_pattern('mix.exs', '.git'),
+        root_dir = function(fname)
+          return lspconfig.util.root_pattern('mix.exs', '.git')(fname) or vim.loop.cwd()
+        end, -- single_file_support = true,
       },
       ['html-lsp'] = {},
       rzls = {},
@@ -267,7 +278,7 @@ local M = {
           -- by the server configuration above. Useful when disabling
           -- certain features of an LSP (for example, turning off formatting for ts_ls)
           server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-          require('lspconfig')[server_name].setup(server)
+          lspconfig[server_name].setup(server)
         end,
       },
     }
