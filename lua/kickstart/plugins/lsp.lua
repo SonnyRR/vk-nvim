@@ -167,25 +167,6 @@ local M = {
       return
     end
 
-    local angularls_path = vim.fn.expand '$MASON/packages/angular-language-server'
-
-    local cmd = {
-      'ngserver',
-      '--stdio',
-      '--tsProbeLocations',
-      table.concat({
-        angularls_path,
-        vim.uv.cwd(),
-      }, ','),
-      '--ngProbeLocations',
-      table.concat({
-        angularls_path .. '\\node_modules\\@angular\\language-server',
-        vim.uv.cwd(),
-      }, ','),
-    }
-
-    local lspconfig = require 'lspconfig'
-
     -- Enable the following language servers
     --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
     --
@@ -201,14 +182,13 @@ local M = {
       -- pyright = {},
       -- rust_analyzer = {},
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-      --
+      --,
       -- Some languages (like typescript) have entire language plugins that can be useful:
       --    https://github.com/pmizio/typescript-tools.nvim
       --
       -- But for many setups, the LSP (`ts_ls`) will work just fine
       -- ts_ls = {},
       --
-
       lua_ls = {
         settings = {
           Lua = {
@@ -220,27 +200,30 @@ local M = {
           },
         },
       },
-      expert = {
-        cmd = { '$MASON/bin/expert' },
-        filetypes = { 'elixir', 'eelixir', 'heex' },
-        -- root_dir = lspconfig.util.root_pattern('mix.exs', '.git'),
-        root_dir = function(fname)
-          return lspconfig.util.root_pattern('mix.exs', '.git')(fname) or vim.loop.cwd()
-        end, -- single_file_support = true,
-      },
+
       ['html-lsp'] = {},
       rzls = {},
       roslyn = {},
       angularls = {
-        cmd = cmd,
-        filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx', 'htmlangular' },
-        on_new_config = function(new_config, new_root_dir)
-          new_config.cmd = cmd
-        end,
+        cmd = {
+          'ngserver',
+          '--stdio',
+          '--tsProbeLocations',
+          table.concat({
+            vim.fn.expand '$MASON/packages/angular-language-server',
+            vim.uv.cwd(),
+          }, ','),
+          '--ngProbeLocations',
+          table.concat({
+            vim.fn.expand '$MASON/packages/angular-language-server' .. '/node_modules/@angular/language-server',
+            vim.uv.cwd(),
+          }, ','),
+        },
       },
       netcoredbg = {},
       ts_ls = {},
       prettierd = {},
+      expert = {},
       vale = {},
       hadolint = {},
       actionlint = {},
@@ -266,22 +249,17 @@ local M = {
     vim.list_extend(ensure_installed, {
       'stylua', -- Used to format Lua code
     })
+
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
-    require('mason-lspconfig').setup {
-      ensure_installed = {},
-      automatic_enable = false,
-      handlers = {
-        function(server_name)
-          local server = servers[server_name] or {}
-          -- This handles overriding only values explicitly passed
-          -- by the server configuration above. Useful when disabling
-          -- certain features of an LSP (for example, turning off formatting for ts_ls)
-          server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-          lspconfig[server_name].setup(server)
-        end,
-      },
-    }
+    -- The following loop will configure each server with the capabilities we defined above.
+    -- This will ensure that all servers have the same base configuration, but also
+    -- allow for server-specific overrides.
+    for server_name, server_config in pairs(servers) do
+      server_config.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server_config.capabilities or {})
+      vim.lsp.config(server_name, server_config)
+      vim.lsp.enable(server_name)
+    end
   end,
 }
 
