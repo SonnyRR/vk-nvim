@@ -1,8 +1,8 @@
 # 🏝️ Vasil Kotsev's Neovim Config
 
-A nvim configuration with sensible defaults. Supports C#, JS, TS & Angular projects.
+A nvim configuration with sensible defaults. Supports `C#`, `Elixir`, `Lua`, `JS`, `TS` & `Angular` projects.
 
-![Screenshot 2025-03-11 at 21 18 49](https://github.com/user-attachments/assets/2d94b26f-f8ba-4717-85be-0375ce3fe5ae)
+<img width="1095" height="964" alt="Landing" src="https://github.com/user-attachments/assets/07487b80-eec1-488a-9069-f8c5977a9202" />
 
 ## Pre-requisites
 
@@ -12,16 +12,16 @@ In order to use this configuration you'll need the following dependencies:
 
 #### 📦 Packages
 
-```powershell
+```pwsh
 winget install BurntSushi.ripgrep.MSVC
 winget install zig.zig
 winget install junegunn.fzf
-winget install Microsoft.DotNet.SDK.9
+winget install Microsoft.DotNet.SDK.10
 winget install OpenJS.NodeJS
 ```
-#### ⚗️ Variables (Optional)
+#### ⚗️ XDG Base Directory Variables (Optional)
 
-```powershell
+```pwsh
 [System.Environment]::SetEnvironmentVariable('XDG_DATA_HOME', 'D:\', 'User')
 [System.Environment]::SetEnvironmentVariable('XDG_CONFIG_HOME', 'D:\dotfiles', 'User')
 ```
@@ -29,9 +29,16 @@ winget install OpenJS.NodeJS
 ### 🍎 MacOS
 
 #### 📦 Packages
-```shell
+```sh
 brew install ripgrep
 brew install fzf
-brew install --cask dotnet-sdk
+brew install --cask dotnet-sdk@10
 brew install node
+```
+
+### 🟪 .NET CLI tools
+```sh
+dotnet tool install -g dotnet-ef
+dotnet tool install -g easydotnet
+dotnet tool install -g dotnet-outdated-tool
 ```
