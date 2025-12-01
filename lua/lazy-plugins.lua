@@ -49,7 +49,7 @@ require('lazy').setup({
   require 'kickstart/plugins/mini',
   require 'kickstart/plugins/treesitter',
   require 'kickstart/plugins/dotnet',
-  require 'kickstart/plugins/roslyn',
+  -- require 'kickstart/plugins/roslyn',
   require 'kickstart/plugins/noice',
   require 'kickstart/plugins/snacks',
   require 'kickstart/plugins/ts-tools',
