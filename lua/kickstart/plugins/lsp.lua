@@ -202,7 +202,6 @@ local M = {
       },
 
       ['html-lsp'] = {},
-      rzls = {},
       roslyn = {},
       angularls = {
         cmd = {
