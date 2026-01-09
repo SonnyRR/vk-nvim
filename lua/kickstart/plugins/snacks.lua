@@ -24,7 +24,7 @@ __   ___  __
           { icon = " ", key = "s", desc = "Restore Session", section = "session" },
           { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy" },
           { icon = "󱥒 ",  key = "m", desc = "Mason", action = ":Mason" },
-          { icon = "♥︎ ",  key = "h", desc = "Health check", action = ":checkhealth" },
+          { icon = "♥︎ ",  key = "h", desc = "Health Check", action = ":checkhealth" },
           { icon = " ", key = "q", desc = "Quit", action = ":qa" },
         },
       },
