@@ -19,6 +19,7 @@ winget install junegunn.fzf
 winget install Microsoft.DotNet.SDK.10
 winget install OpenJS.NodeJS
 ```
+
 #### ⚗️ XDG Base Directory Variables (Optional)
 
 ```pwsh
@@ -29,6 +30,7 @@ winget install OpenJS.NodeJS
 ### 🍎 MacOS
 
 #### 📦 Packages
+
 ```sh
 brew install ripgrep
 brew install fzf
@@ -37,6 +39,7 @@ brew install node
 ```
 
 ### 🟪 .NET CLI tools
+
 ```sh
 dotnet tool install -g dotnet-ef
 dotnet tool install -g easydotnet
