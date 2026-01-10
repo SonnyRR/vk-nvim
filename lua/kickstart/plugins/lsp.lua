@@ -229,6 +229,7 @@ local M = {
       ['markdownlint-cli2'] = {},
       jsonlint = {},
       yamllint = {},
+      tailwindcss = {},
     }
 
     -- Ensure the servers and tools above are installed
