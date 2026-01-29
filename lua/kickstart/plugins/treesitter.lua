@@ -1,13 +1,14 @@
 local M = {
-  { -- Highlight, edit, and navigate code
+  {
     'nvim-treesitter/nvim-treesitter',
+    lazy = false,
+    branch = 'main',
     build = ':TSUpdate',
-    main = 'nvim-treesitter.configs', -- Sets main module to use for opts
-    -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-    opts = {
-      ensure_installed = {
+    config = function()
+      local languages = {
         'diff',
         'lua',
+        'markdown',
         'luadoc',
         'regex',
         'json',
@@ -32,26 +33,31 @@ local M = {
         'elixir',
         'xml',
         'yaml',
-      },
-      -- Autoinstall languages that are not installed
-      auto_install = true,
-      highlight = {
-        enable = true,
-        -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-        --  If you are experiencing weird indenting issues, add the language to
-        --  the list of additional_vim_regex_highlighting and disabled languages for indent.
-        additional_vim_regex_highlighting = { 'ruby' },
-      },
-      indent = { enable = true, disable = { 'ruby' } },
-    },
-    -- There are additional nvim-treesitter modules that you can use to interact
-    -- with nvim-treesitter. You should go explore a few and see what interests you:
-    --
-    --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-    --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-    --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+      }
+
+      if vim.loop.os_uname().sysname == 'Windows_NT' then
+        -- On Windows NT systems, make sure you install GCC from WinLibs.com
+        -- Zig no longer works for all parsers, since 'nvim-treesitter'
+        -- refactored the plugin and moved from the 'master' to te 'main' branch
+        vim.env.CC = 'gcc'
+      end
+      require('nvim-treesitter').install(languages)
+
+      local filetypes = {}
+      for _, lang in ipairs(languages) do
+        for _, ft in ipairs(vim.treesitter.language.get_filetypes(lang)) do
+          table.insert(filetypes, ft)
+        end
+      end
+
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = filetypes,
+        callback = function()
+          vim.treesitter.start()
+        end,
+      })
+    end,
   },
 }
-
 return M
 -- vim: ts=2 sts=2 sw=2 et
