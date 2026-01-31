@@ -13,11 +13,15 @@ In order to use this configuration you'll need the following dependencies:
 #### 📦 Packages
 
 ```pwsh
+winget install BrechtSanders.WinLibs.POSIX.UCRT
 winget install BurntSushi.ripgrep.MSVC
-winget install zig.zig
 winget install junegunn.fzf
 winget install Microsoft.DotNet.SDK.10
 winget install OpenJS.NodeJS
+
+bun add -g tree-sitter-cli
+# or
+npm install -g tree-sitter-cli
 ```
 
 #### ⚗️ XDG Base Directory Variables (Optional)
@@ -36,12 +40,13 @@ brew install ripgrep
 brew install fzf
 brew install --cask dotnet-sdk@10
 brew install node
+brew install tree-sitter-cli
 ```
 
 ### 🟪 .NET CLI tools
 
 ```sh
-dotnet tool install -g dotnet-ef
 dotnet tool install -g easydotnet
 dotnet tool install -g dotnet-outdated-tool
+dotnet tool install -g dotnet-ef
 ```
