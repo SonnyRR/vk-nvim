@@ -36,7 +36,7 @@ local M = {
       }
 
       if vim.loop.os_uname().sysname == 'Windows_NT' then
-        -- On Windows NT systems, make sure you install GCC from WinLibs.com
+        -- NOTE: On Windows NT systems, make sure you install GCC from WinLibs.com
         -- Zig no longer works for all parsers, since 'nvim-treesitter'
         -- refactored the plugin and moved from the 'master' to te 'main' branch
         vim.env.CC = 'gcc'

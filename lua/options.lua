@@ -8,9 +8,9 @@ vim.o.mouse = 'a'
 vim.o.showmode = false
 
 -- Sync clipboard between OS and Neovim.
---  Schedule the setting after `UiEnter` because it can increase startup-time.
---  Remove this oion if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
+-- Schedule the setting after `UiEnter` because it can increase startup-time.
+-- Remove this oion if you want your OS clipboard to remain independent.
+-- See `:help 'clipboard'`
 vim.schedule(function()
   vim.o.clipboard = 'unnamedplus'
 end)
@@ -39,8 +39,7 @@ vim.o.splitright = true
 vim.o.splitbelow = true
 
 -- Sets how neovim will display certain whitespace characters in the editor.
---  See `:help 'list'`
---  and `:help 'listchars'`
+-- See `:help 'list'` and `:help 'listchars'`
 vim.o.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 

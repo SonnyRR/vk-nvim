@@ -1,3 +1,7 @@
+-- WARN: This config is obsolete and soon will be deleted.
+-- See dotnet.lua & lsp.lua.
+-- This is kept because it included rzls support, but is currently
+-- not in use.
 local M = {
   'seblyng/roslyn.nvim',
   ft = { 'cs', 'razor', 'cshtml' },
