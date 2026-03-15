@@ -2,9 +2,9 @@
 
 A nvim configuration with sensible defaults. Supports `C#`, `Elixir`, `Lua`, `JS`, `TS` & `Angular` projects.
 
-<img width="1095" height="964" alt="Landing" src="https://github.com/user-attachments/assets/07487b80-eec1-488a-9069-f8c5977a9202" />
+<img width="919" height="813" alt="Landing" src="https://github.com/user-attachments/assets/e8f1a831-39c8-418a-8fdf-b0ff1d081f3a" />
 
-## Pre-requisites
+## 🧩 Pre-requisites
 
 In order to use this configuration you'll need the following dependencies:
 
@@ -12,7 +12,7 @@ In order to use this configuration you'll need the following dependencies:
 
 #### 📦 Packages
 
-```pwsh
+```powershell
 winget install BrechtSanders.WinLibs.POSIX.UCRT
 winget install BurntSushi.ripgrep.MSVC
 winget install junegunn.fzf
@@ -26,7 +26,7 @@ npm install -g tree-sitter-cli
 
 #### ⚗️ XDG Base Directory Variables (Optional)
 
-```pwsh
+```powershell
 [System.Environment]::SetEnvironmentVariable('XDG_DATA_HOME', 'D:\', 'User')
 [System.Environment]::SetEnvironmentVariable('XDG_CONFIG_HOME', 'D:\dotfiles', 'User')
 ```
