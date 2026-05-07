@@ -18,6 +18,11 @@ local M = {
           enabled = true,
           roslynator_enabled = true,
           analyzer_assemblies = {},
+          -- Disable codelens until the indentation for the symbols is fixed by the neovim team.
+          -- for reference see:
+          --  https://github.com/GustavEikaas/easy-dotnet.nvim/issues/940
+          --  https://github.com/neovim/neovim/issues/38676
+          auto_refresh_codelens = false,
           config = {
             settings = {
               -- https://github.com/dotnet/vscode-csharp/blob/main/test/lsptoolshost/unitTests/configurationMiddleware.test.ts
