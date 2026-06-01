@@ -15,7 +15,7 @@ local M = {
         },
         -- https://github.com/GustavEikaas/easy-dotnet.nvim/blob/main/lua/easy-dotnet/options.lua
         lsp = {
-          enabled = true,
+          enabled = false,
           roslynator_enabled = true,
           analyzer_assemblies = {},
           -- Disable codelens until the indentation for the symbols is fixed by the neovim team.

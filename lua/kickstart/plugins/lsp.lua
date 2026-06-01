@@ -10,7 +10,6 @@ local M = {
       opts = {
         registries = {
           'github:mason-org/mason-registry',
-          'github:Crashdummyy/mason-registry',
         },
       },
     },
@@ -153,9 +152,7 @@ local M = {
           },
         },
       },
-
-      ['html-lsp'] = {},
-      roslyn = {},
+      roslyn_ls = {},
       angularls = {
         cmd = {
           'ngserver',
@@ -180,6 +177,7 @@ local M = {
       hadolint = {},
       actionlint = {},
       ['markdownlint-cli2'] = {},
+      ['html-lsp'] = {},
       jsonlint = {},
       yamllint = {},
       tailwindcss = {},

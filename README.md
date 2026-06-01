@@ -19,8 +19,6 @@ winget install junegunn.fzf
 winget install Microsoft.DotNet.SDK.10
 winget install OpenJS.NodeJS
 
-bun add -g tree-sitter-cli
-# or
 npm install -g tree-sitter-cli
 ```
 
