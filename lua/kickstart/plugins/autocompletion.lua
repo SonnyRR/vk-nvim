@@ -43,20 +43,13 @@ local M = {
         -- ['<C-h>'] = { 'snippet_backward' },
       },
       sources = {
-        default = { 'lsp', 'path', 'easy-dotnet', 'snippets', 'buffer' },
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
         providers = {
           lsp = {
             name = 'lsp',
             module = 'blink.cmp.sources.lsp',
           },
           path = { name = 'path', module = 'blink.cmp.sources.path' },
-          ['easy-dotnet'] = {
-            name = 'easy-dotnet',
-            enabled = true,
-            module = 'easy-dotnet.completion.blink',
-            score_offset = 10000,
-            async = true,
-          },
           snippets = { name = 'snippets', module = 'blink.cmp.sources.snippets' },
           buffer = { name = 'buffer', module = 'blink.cmp.sources.buffer' },
         },
