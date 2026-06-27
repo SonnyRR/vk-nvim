@@ -33,6 +33,7 @@ local M = {
         'elixir',
         'xml',
         'yaml',
+        'razor',
       }
 
       if vim.loop.os_uname().sysname == 'Windows_NT' then
