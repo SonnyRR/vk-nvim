@@ -6,6 +6,9 @@ local M = {
       require('easy-dotnet').setup {
         -- NetCoreDbg is now available OOB w/ zero click configuration in easy-dotnet.
         -- However, I will continue to manage it through Mason.
+        test_runner = {
+          neotest_integration = true,
+        },
         debugger = {
           bin_path = (function()
             local is_windows = vim.uv.os_uname().sysname == 'Windows_NT'
