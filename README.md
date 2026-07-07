@@ -16,6 +16,7 @@ In order to use this configuration you'll need the following dependencies:
 winget install BrechtSanders.WinLibs.POSIX.UCRT
 winget install BurntSushi.ripgrep.MSVC
 winget install junegunn.fzf
+winget install sharkdp.fd
 winget install Microsoft.DotNet.SDK.10
 winget install OpenJS.NodeJS
 
@@ -36,6 +37,7 @@ npm install -g tree-sitter-cli
 ```sh
 brew install ripgrep
 brew install fzf
+brew install fd
 brew install --cask dotnet-sdk@10
 brew install node
 brew install tree-sitter-cli
