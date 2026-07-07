@@ -4,15 +4,23 @@ local M = {
     dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim' },
     config = function()
       require('easy-dotnet').setup {
+        -- NetCoreDbg is now available OOB w/ zero click configuration in easy-dotnet.
+        -- However, I will continue to manage it through Mason.
         test_runner = {
           neotest_integration = true,
         },
         debugger = {
-          engine = 'sharpdbg',
+          bin_path = (function()
+            local is_windows = vim.uv.os_uname().sysname == 'Windows_NT'
+            local debugger_bin = is_windows and 'netcoredbg.cmd' or 'netcoredbg'
+            return vim.fs.joinpath(vim.fn.stdpath 'data', 'mason', 'bin', debugger_bin)
+          end)(),
         },
         -- https://github.com/GustavEikaas/easy-dotnet.nvim/blob/main/lua/easy-dotnet/options.lua
         lsp = {
+          enabled = false,
           roslynator_enabled = true,
+          analyzer_assemblies = {},
           -- Disable codelens until the indentation for the symbols is fixed by the neovim team.
           -- for reference see:
           --  https://github.com/GustavEikaas/easy-dotnet.nvim/issues/940

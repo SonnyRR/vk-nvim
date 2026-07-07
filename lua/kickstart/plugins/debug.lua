@@ -75,7 +75,9 @@ local M = {
       -- You can provide additional configuration to the handlers,
       -- see mason-nvim-dap README for more information
       handlers = {},
-      ensure_installed = {},
+      ensure_installed = {
+        'netcoredbg',
+      },
     }
 
     -- Dap UI setup
@@ -182,6 +184,9 @@ local M = {
       local hl = (type == 'Stopped') and 'DapStop' or 'DapBreak'
       vim.fn.sign_define(tp, { text = icon, texthl = hl, numhl = hl })
     end
+
+    -- special variables viewer specific for .NET
+    require('easy-dotnet.netcoredbg').register_dap_variables_viewer()
 
     dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close

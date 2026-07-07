@@ -152,9 +152,7 @@ local M = {
           },
         },
       },
-      -- TODO: Disabled until a newer version appears in mason registry.
-      -- Until then, fallback to the one distributed by easy-dotnet.
-      -- roslyn_ls = {},
+      roslyn_ls = {},
       angularls = {
         cmd = {
           'ngserver',
@@ -171,6 +169,7 @@ local M = {
           }, ','),
         },
       },
+      netcoredbg = {},
       ts_ls = {},
       prettierd = {},
       expert = {},
