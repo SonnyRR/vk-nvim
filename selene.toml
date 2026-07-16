@@ -5,3 +5,4 @@ exclude = []
 unused_variable = "deny"
 unused_assignment = "deny"
 nil_access = "deny"
+mixed_table = "allow"
