@@ -1,0 +1,39 @@
+# Auto-detect text vs binary; normalize to LF on checkout
+* text=auto eol=lf
+
+# ── Lua ──────────────────────────────────────────────────────────
+*.lua          text diff=lua linguist-language=Lua
+
+# ── Markdown ─────────────────────────────────────────────────────
+*.md           text diff=markdown
+
+# ── JSON / JSONC ─────────────────────────────────────────────────
+*.json         text diff=json
+*.jsonc        text diff=json
+
+# ── YAML ─────────────────────────────────────────────────────────
+*.yml          text diff=yaml
+*.yaml         text diff=yaml
+
+# ── Config files ─────────────────────────────────────────────────
+.gitattributes text
+.gitconfig     text
+.gitignore     text
+.editorconfig  text
+.stylua.toml   text
+*.cfg          text
+
+# ── Lockfile — treat as generated to avoid merge conflicts ───────
+lazy-lock.json merge=union linguist-generated
+
+# ── Binary assets ────────────────────────────────────────────────
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.svg  text diff=xml
+*.woff binary
+*.woff2 binary
+*.ttf  binary
+*.eot  binary
