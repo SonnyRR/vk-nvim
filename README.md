@@ -10,39 +10,39 @@ A nvim configuration with sensible defaults. Supports `C#`, `Elixir`, `Lua`, `JS
 
 ```
 📦 vk-nvim
-├── init.lua
-├── lua/
-│   ├── options.lua
-│   ├── keymaps.lua
-│   ├── lazy-bootstrap.lua
-│   ├── lazy-plugins.lua
-│   ├── health.lua
-│   └── plugins/
-│       ├── autocompletion.lua
-│       ├── autopairs.lua
-│       ├── conform.lua
-│       ├── debug.lua
-│       ├── dotnet.lua
-│       ├── dracula.lua
-│       ├── gitsigns.lua
-│       ├── indent-line.lua
-│       ├── lazy-dev.lua
-│       ├── lint.lua
-│       ├── lsp.lua
-│       ├── mini.lua
-│       ├── neo-tree.lua
-│       ├── neotest.lua
-│       ├── noice.lua
-│       ├── opencode.lua
-│       ├── snacks.lua
-│       ├── telescope.lua
-│       ├── todo-comments.lua
-│       ├── treesitter.lua
-│       ├── ts-tools.lua
-│       └── which-key.lua
-├── lazy-lock.json
-├── .stylua.toml
-└── selene.toml
+├── init.lua                  # Entry point, requires options, keymaps, & lazy
+├── lua/                      # Lua source directory
+│   ├── options.lua           # Editor options (number, clipboard, etc.)
+│   ├── keymaps.lua           # Core key mappings
+│   ├── lazy-bootstrap.lua    # Bootstrap lazy.nvim plugin manager
+│   ├── lazy-plugins.lua      # Central plugin spec loader
+│   ├── health.lua            # :checkhealth provider for vk-nvim
+│   └── plugins/              # Per-plugin configuration specs
+│       ├── autocompletion.lua    # blink.cmp + LuaSnip completion
+│       ├── autopairs.lua         # Auto-close brackets & quotes
+│       ├── conform.lua           # Code formatting
+│       ├── debug.lua             # DAP integration (nvim-dap + nvim-dap-ui)
+│       ├── dotnet.lua            # .NET development (easy-dotnet.nvim)
+│       ├── dracula.lua           # Dracula colorscheme
+│       ├── gitsigns.lua          # Git gutter signs & keymaps
+│       ├── indent-line.lua       # Indentation guides (indent-blankline)
+│       ├── lazy-dev.lua          # Lua LSP helpers for Neovim config
+│       ├── lint.lua              # Linting framework (nvim-lint)
+│       ├── lsp.lua               # LSP client setup (mason, lspconfig)
+│       ├── mini.lua              # mini.ai, mini.surround, mini.statusline
+│       ├── neo-tree.lua          # File explorer
+│       ├── neotest.lua           # Test runner (Elixir, Jest, Vitest, Playwright, .NET)
+│       ├── noice.lua             # UI notifications & command-line
+│       ├── opencode.lua          # AI coding assistant
+│       ├── snacks.lua            # Dashboard & quickfile
+│       ├── telescope.lua         # Fuzzy finder
+│       ├── todo-comments.lua     # TODO / FIXME comment highlighting
+│       ├── treesitter.lua        # Treesitter parsers
+│       ├── ts-tools.lua          # TypeScript LSP enhancements
+│       └── which-key.lua         # Keybinding popup
+├── lazy-lock.json            # Locked plugin versions
+├── .stylua.toml              # StyLua formatter config
+└── selene.toml               # Selene linter config
 ```
 
 ## 🧩 Pre-requisites
@@ -64,13 +64,6 @@ winget install OpenJS.NodeJS
 npm install -g tree-sitter-cli
 ```
 
-#### ⚗️ XDG Base Directory Variables (Optional)
-
-```powershell
-[System.Environment]::SetEnvironmentVariable('XDG_DATA_HOME', 'D:\', 'User')
-[System.Environment]::SetEnvironmentVariable('XDG_CONFIG_HOME', 'D:\dotfiles', 'User')
-```
-
 ### 🍎 MacOS
 
 #### 📦 Packages
@@ -82,16 +75,6 @@ brew install fd
 brew install --cask dotnet-sdk@10
 brew install node
 brew install tree-sitter-cli
-```
-
-#### ⚗️ XDG Base Directory Variables (Optional)
-
-On macOS, XDG base directories are not set by default. Add the following to your shell profile (`~/.zshrc`, `~/.bashrc`, etc.):
-
-```sh
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
 ```
 
 ### 🐧 Linux
@@ -108,17 +91,12 @@ sudo apt install ripgrep fzf fd-find nodejs npm
 sudo dnf install ripgrep fzf fd-find nodejs
 ```
 
-For the .NET SDK, follow the [official Microsoft installation guide](https://learn.microsoft.com/dotnet/core/install/linux).
-
-#### ⚗️ XDG Base Directory Variables (Optional)
-
-XDG base directories are typically pre-configured on most Linux distributions. To customize them, add the following to your shell profile (`~/.bashrc`, `~/.zshrc`, etc.):
-
 ```sh
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
+# OpenSUSE Tumbleweed
+sudo zypper install ripgrep fzf fd nodejs
 ```
+
+For the .NET SDK, follow the [official Microsoft installation guide](https://learn.microsoft.com/dotnet/core/install/linux).
 
 ### 🟪 .NET CLI tools
 
@@ -143,8 +121,38 @@ nvim --headless "+Lazy! sync" +qa
 ## 🔧 Supported Neovim Version
 
 | Minimum | CI / Recommended |
-|---------|------------------|
+| ------- | ---------------- |
 | 0.10+   | 0.12.4           |
 
 The configuration is validated in CI against **Neovim 0.12.4** and requires **0.10+** (enforced by the built-in health check). It uses vim.lsp.config (0.11+), vim.treesitter (0.10+), and other modern APIs.
+
+## ⚗️ XDG Base Directory Variables
+
+Neovim follows the [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/latest/) to locate its configuration, data, and cache directories. You can customize these paths per operating system.
+
+### 🪟 Windows
+
+```powershell
+[System.Environment]::SetEnvironmentVariable('XDG_DATA_HOME', 'D:\', 'User')
+[System.Environment]::SetEnvironmentVariable('XDG_CONFIG_HOME', 'D:\dotfiles', 'User')
+```
+
+### 🍎 macOS
+
+XDG base directories are not set by default on macOS. Add the following to your shell profile (`~/.zshrc`, `~/.bashrc`, etc.):
+
+```sh
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+```
+
+### 🐧 Linux
+
+XDG base directories are typically pre-configured on most Linux distributions. To customize them, add the following to your shell profile (`~/.bashrc`, `~/.zshrc`, etc.):
+
+```sh
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
 ```
