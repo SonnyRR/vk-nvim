@@ -1,0 +1,6 @@
+---
+globals:
+  vim:
+    any: true
+  P:
+    any: true
