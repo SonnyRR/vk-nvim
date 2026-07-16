@@ -17,6 +17,7 @@ concurrency:
 
 jobs:
   lint:
+    name: Format check & lint
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -40,6 +41,7 @@ jobs:
         run: selene .
 
   validate:
+    name: Validate
     runs-on: ubuntu-latest
     timeout-minutes: 5
     needs: lint
