@@ -1,0 +1,17 @@
+[selene]
+name = "vk-nvim"
+bail = true
+
+[std]
+version = "lua51"
+
+[globals]
+vim = "read_only"
+P = "read_only"
+
+[lints]
+unused_variable = "deny"
+unused_assignment = "deny"
+nil_access = "deny"
+nil_global = "deny"
+global_assignment = "deny"
