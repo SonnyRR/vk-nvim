@@ -1,5 +1,6 @@
 local M = {
   'folke/snacks.nvim',
+  lazy = false,
   opts = {
     dashboard = {
       preset = {
@@ -9,7 +10,7 @@ local M = {
         header = [[
 __   ___  __
 \ \ / | |/ /
- \ V /| ' < 
+ \ V /| ' <
   \_/ |_|\_\
 
         ]],
@@ -30,6 +31,16 @@ __   ___  __
       },
     },
     quickfile = {},
+    lazygit = {},
+  },
+  keys = {
+    {
+      '<leader>lg',
+      function()
+        Snacks.lazygit()
+      end,
+      desc = 'LazyGit',
+    },
   },
 }
 
