@@ -60,6 +60,9 @@ jobs:
       - name: Verify installation
         run: nvim --version
 
+      - name: Install tree-sitter CLI
+        run: npm install -g tree-sitter-cli
+
       - name: Validate config loads
         run: |
           rm -rf ~/.config/nvim
