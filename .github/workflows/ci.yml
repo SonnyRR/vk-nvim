@@ -61,4 +61,7 @@ jobs:
         run: nvim --version
 
       - name: Validate config loads
-        run: nvim --headless -c "qall"
+        run: |
+          rm -rf ~/.config/nvim
+          ln -sf "$PWD" ~/.config/nvim
+          nvim --headless -c "qall"
