@@ -1,3 +1,5 @@
+local biome_config = vim.fn.stdpath 'config' .. '/biome.json'
+
 local M = {
   {
     'stevearc/conform.nvim',
@@ -31,14 +33,35 @@ local M = {
           lsp_format = lsp_format_opt,
         }
       end,
+      formatters = {
+        biome = {
+          args = function(self, ctx)
+            if self:cwd(ctx) then
+              return { 'format', '--stdin-file-path', '$FILENAME' }
+            end
+            return {
+              'format',
+              '--stdin-file-path',
+              '$FILENAME',
+              '--config-path',
+              biome_config,
+            }
+          end,
+        },
+      },
       formatters_by_ft = {
         lua = { 'stylua' },
-        javascript = { 'prettierd' },
-        html = { 'prettierd' },
-        css = { 'prettierd' },
-        scss = { 'prettierd' },
-        markdown = { 'prettierd' },
-        json = { 'prettierd' },
+        javascript = { 'biome' },
+        javascriptreact = { 'biome' },
+        typescript = { 'biome' },
+        typescriptreact = { 'biome' },
+        html = { 'biome' },
+        css = { 'biome' },
+        scss = { 'biome' },
+        markdown = { 'markdownlint-cli2' },
+        json = { 'biome' },
+        jsonc = { 'biome' },
+        json5 = { 'biome' },
       },
     },
   },
