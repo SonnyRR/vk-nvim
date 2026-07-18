@@ -41,7 +41,10 @@ A nvim configuration with sensible defaults. Supports `C#`, `Elixir`, `Lua`, `JS
 │       ├── ts-tools.lua          # TypeScript LSP enhancements
 │       └── which-key.lua         # Keybinding popup
 ├── lazy-lock.json            # Locked plugin versions
+├── .editorconfig             # EditorConfig formatting
 ├── .stylua.toml              # StyLua formatter config
+├── biome.json                # Biome formatter/linter config
+├── neovim.yml                # CI workflow config
 └── selene.toml               # Selene linter config
 ```
 
