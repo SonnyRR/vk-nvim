@@ -29,7 +29,6 @@ local M = {
         'angular',
         'css',
         'scss',
-        'zig',
         'elixir',
         'xml',
         'yaml',
