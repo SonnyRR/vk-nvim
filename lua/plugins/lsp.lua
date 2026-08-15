@@ -180,6 +180,7 @@ local M = {
       jsonlint = {},
       yamllint = {},
       tailwindcss = {},
+      yq = {},
     }
 
     -- Ensure the servers and tools above are installed
