@@ -6,7 +6,7 @@ on:
     branches: [master]
 
 env:
-  NEOVIM_VERSION: "0.12.4"
+  NEOVIM_VERSION: "0.12.5"
 
 permissions:
   contents: read
