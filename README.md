@@ -125,9 +125,9 @@ nvim --headless "+Lazy! sync" +qa
 
 | Minimum | CI / Recommended |
 | ------- | ---------------- |
-| 0.10+   | 0.12.4           |
+| 0.10+   | 0.12.5           |
 
-The configuration is validated in CI against **Neovim 0.12.4** and requires **0.10+** (enforced by the built-in health check). It uses vim.lsp.config (0.11+), vim.treesitter (0.10+), and other modern APIs.
+The configuration is validated in CI against **Neovim 0.12.5** and requires **0.10+** (enforced by the built-in health check). It uses vim.lsp.config (0.11+), vim.treesitter (0.10+), and other modern APIs.
 
 ## ⚗️ XDG Base Directory Variables
 
