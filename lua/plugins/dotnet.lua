@@ -13,6 +13,10 @@ local M = {
             return vim.fs.joinpath(vim.fn.stdpath 'data', 'mason', 'bin', debugger_bin)
           end)(),
         },
+        managed_terminal = {
+          auto_hide = true,
+          auto_hide_delay = 2000,
+        },
         -- https://github.com/GustavEikaas/easy-dotnet.nvim/blob/main/lua/easy-dotnet/options.lua
         lsp = {
           enabled = false,
@@ -23,6 +27,9 @@ local M = {
           --  https://github.com/GustavEikaas/easy-dotnet.nvim/issues/940
           --  https://github.com/neovim/neovim/issues/38676
           auto_refresh_codelens = false,
+          enhanced_rename = true,
+          easy_dotnet_extension_enabled = true,
+          restart_roslyn_on_branch_change = true,
           config = {
             settings = {
               -- https://github.com/dotnet/vscode-csharp/blob/main/test/lsptoolshost/unitTests/configurationMiddleware.test.ts
@@ -52,6 +59,7 @@ local M = {
         test_runner = {
           neotest_integration = true,
         },
+        picker = 'telescope',
         -- Uncomment in case you need to debug issues.
         -- server = {
         --   log_level = 'Verbose',
