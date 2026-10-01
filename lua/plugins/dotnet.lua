@@ -65,6 +65,33 @@ local M = {
         --   log_level = 'Verbose',
         -- },
       }
+
+      -- Visual Studio style mappings.
+      -- https://github.com/GustavEikaas/easy-dotnet.nvim/blob/main/docs/advanced-patterns.md
+
+      -- Ctrl+B -> Build. Unlike `build_default`, this opens a picker so the target
+      -- project/solution can be chosen on every build. Use `:Dotnet build default`
+      -- (or `build_default_quickfix`) if you want the persisted default instead.
+      vim.keymap.set('n', '<C-b>', function()
+        require('easy-dotnet').build()
+      end, { desc = 'Build (.NET)', nowait = true })
+
+      -- Alt+I -> Toggle the managed terminal panel. Mapped in terminal mode as well so
+      -- the panel can be hidden without leaving it. Note the panel is separate from
+      -- `external_terminal` (where `:Dotnet run` output goes).
+      vim.keymap.set({ 'n', 't' }, '<A-i>', function()
+        vim.cmd 'Dotnet terminal toggle'
+      end, { desc = 'Toggle .NET terminal', noremap = true, silent = true })
+
+      -- Ctrl+P -> Run the persisted default project with its default launch profile.
+      vim.keymap.set('n', '<C-p>', function()
+        vim.cmd 'Dotnet run profile default'
+      end, { desc = 'Run .NET (default profile)', nowait = true })
+
+      -- Ctrl+Alt+P -> Debug the persisted default project with its default launch profile.
+      vim.keymap.set('n', '<C-A-p>', function()
+        vim.cmd 'Dotnet debug profile default'
+      end, { desc = 'Debug .NET (default profile)', nowait = true })
     end,
   },
 }
