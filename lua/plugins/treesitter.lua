@@ -33,6 +33,7 @@ local M = {
         'xml',
         'yaml',
         'razor',
+        'terraform',
       }
 
       if vim.loop.os_uname().sysname == 'Windows_NT' then
