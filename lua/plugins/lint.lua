@@ -32,10 +32,11 @@ local M = {
     config = function()
       local lint = require 'lint'
       lint.linters_by_ft = {
-        markdown = { 'markdownlint-cli2' },
+        markdown = { 'biomejs' },
+        scss = { 'biomejs' },
+        yaml = { 'biomejs' },
         dockerfile = { 'hadolint' },
         json = { 'jsonlint' },
-        yaml = { 'yamllint' },
         text = { 'vale' },
       }
 
