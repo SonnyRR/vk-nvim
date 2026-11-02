@@ -52,4 +52,13 @@ vim.o.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.o.scrolloff = 10
 
+-- Make the cursor blink. Blink works in the TUI if your terminal supports it
+-- (e.g. kitty, alacritty, iterm2, windows terminal, gnome terminal).
+-- See `:help 'guicursor'`
+vim.opt.guicursor = {
+  'n-v-c:block-blinkwait300-blinkon250-blinkoff150',
+  'i-ci-ve:ver25-blinkwait300-blinkon250-blinkoff150',
+  'r-cr:hor25-blinkwait300-blinkon250-blinkoff150',
+}
+
 -- vim: ts=2 sts=2 sw=2 et
