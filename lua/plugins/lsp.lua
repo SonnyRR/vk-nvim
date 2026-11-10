@@ -153,6 +153,10 @@ local M = {
       },
       roslyn_ls = {},
       angularls = {
+        -- Attaches to `html` filetypes. Without this, core falls back to the
+        -- cwd when no workspace is found and ngserver starts in plain
+        -- non-Angular HTML dirs.
+        workspace_required = true,
         cmd = {
           'ngserver',
           '--stdio',
@@ -175,7 +179,6 @@ local M = {
       vale = {},
       hadolint = {},
       actionlint = {},
-      ['html-lsp'] = {},
       tailwindcss = {},
       yq = {},
       lemminx = {},

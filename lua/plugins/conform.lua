@@ -70,6 +70,7 @@ local M = {
       },
       formatters_by_ft = {
         lua = { 'stylua' },
+        elixir = { 'mix' },
         javascript = { 'biome' },
         javascriptreact = { 'biome' },
         typescript = { 'biome' },
