@@ -3,7 +3,7 @@
 -- what the linters actually own.
 local function clear_lint_diagnostics(bufnr)
   local lint = require 'lint'
-  for _, name in ipairs(lint.linters_by_ft[vim.bo[bufnr].filetype] or {}) do
+  for _, name in ipairs(lint._resolve_linter_by_ft(vim.bo[bufnr].filetype)) do
     vim.diagnostic.reset(lint.get_namespace(name), bufnr)
   end
 end
@@ -34,9 +34,13 @@ local M = {
       lint.linters_by_ft = {
         markdown = { 'biomejs' },
         scss = { 'biomejs' },
+        css = { 'biomejs' },
         yaml = { 'biomejs' },
+        ['yaml.github-actions'] = { 'actionlint', 'biomejs' },
+        terraform = { 'tflint' },
         dockerfile = { 'hadolint' },
-        json = { 'jsonlint' },
+        json = { 'biomejs' },
+        jsonc = { 'biomejs' },
         text = { 'vale' },
       }
 

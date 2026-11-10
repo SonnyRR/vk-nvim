@@ -175,12 +175,14 @@ local M = {
       vale = {},
       hadolint = {},
       actionlint = {},
-      ['markdownlint-cli2'] = {},
       ['html-lsp'] = {},
-      jsonlint = {},
-      yamllint = {},
       tailwindcss = {},
       yq = {},
+      lemminx = {},
+      zizmor = {},
+      tflint = {},
+      xmlformatter = {},
+      dockerfmt = {},
     }
 
     -- Ensure the servers and tools above are installed
