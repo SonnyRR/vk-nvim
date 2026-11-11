@@ -34,25 +34,6 @@ local M = {
         }
       end,
       formatters = {
-        xmlformatter = {
-          -- NOTE: option order matters — every flag must come BEFORE the
-          -- trailing `-` (stdin marker), otherwise xmlformat eats them as
-          -- junk after the input spec.
-          args = {
-            '--indent',
-            '2',
-            '--indent-char',
-            ' ',
-            '--selfclose', -- collapse <x></x> to <x/>
-            '--preserve-attributes', -- no alphabetical attribute sorting
-            '--blanks', -- keep blank separator lines
-            '--disable-correction', -- don't reflow long prose onto one line
-            '--eof-newline',
-            '--preserve',
-            'pre,notes', -- pass through xml:space-ish elements
-            '-',
-          },
-        },
         biome = {
           args = function(self, ctx)
             if self:cwd(ctx) then
@@ -79,7 +60,6 @@ local M = {
         css = { 'biome' },
         scss = { 'biome' },
         markdown = { 'biome' },
-        xml = { 'xmlformatter' },
         yaml = { 'biome' },
         ['yaml.github-actions'] = { 'biome' },
         dockerfile = { 'dockerfmt' },

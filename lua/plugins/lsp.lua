@@ -184,7 +184,6 @@ local M = {
       lemminx = {},
       zizmor = {},
       tflint = {},
-      xmlformatter = {},
     }
 
     -- Ensure the servers and tools above are installed
