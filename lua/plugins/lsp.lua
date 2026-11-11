@@ -185,7 +185,6 @@ local M = {
       zizmor = {},
       tflint = {},
       xmlformatter = {},
-      dockerfmt = {},
     }
 
     -- Ensure the servers and tools above are installed
