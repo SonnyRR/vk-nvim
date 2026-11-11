@@ -181,8 +181,6 @@ local M = {
       actionlint = {},
       tailwindcss = {},
       yq = {},
-      lemminx = {},
-      zizmor = {},
       tflint = {},
     }
 
